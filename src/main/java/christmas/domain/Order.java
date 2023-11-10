@@ -1,11 +1,12 @@
 package christmas.domain;
 
+import static christmas.global.ErrorMessage.INVALID_ORDER_FORMAT_ERROR;
+
 import christmas.domain.menus.Drink;
 import christmas.domain.menus.Menus;
 import java.util.Map;
 
 public class Order {
-    private static final String INVALID_ORDER_FORMAT_ERROR = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final int MAX_ORDER_COUNT = 20;
     private final Map<Menus, Integer> orders;
 
@@ -25,7 +26,7 @@ public class Order {
             count += input.get(key);
         }
         if (exceedMaxCount(count)) {
-            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }
     }
 
@@ -39,7 +40,7 @@ public class Order {
                 return;
             }
         }
-        throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+        throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
     }
 
     private static boolean isInstanceOf(Menus key) {

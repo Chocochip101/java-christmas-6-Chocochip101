@@ -1,5 +1,7 @@
 package christmas.global;
 
+import static christmas.global.ErrorMessage.INVALID_ORDER_FORMAT_ERROR;
+
 import christmas.domain.Order;
 import christmas.domain.menus.Menus;
 import java.util.HashMap;
@@ -11,7 +13,6 @@ public class OrderUtil {
     private static final int NAME_PART = 0;
     private static final int QUANTITY_PART = 1;
     private static final int ONE_ORDER_CHUNK_SIZE = 2;
-    private static final String INVALID_ORDER_FORMAT_ERROR = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
     public static Order convertInputToOrder(String userInput) {
         Map<Menus, Integer> orderResult = new HashMap<>();
@@ -28,7 +29,7 @@ public class OrderUtil {
 
     private static void checkMenuDuplication(Map<Menus, Integer> orderResult, String[] orders) {
         if (orders.length != orderResult.size()) {
-            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }
     }
 
@@ -40,7 +41,7 @@ public class OrderUtil {
 
     private static void checkOneOrderChunkSize(String[] oneOrder) {
         if (oneOrder.length != ONE_ORDER_CHUNK_SIZE) {
-            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }
     }
 
@@ -56,7 +57,7 @@ public class OrderUtil {
 
     private static void checkQuantityRange(String quantity) {
         if (Integer.parseInt(quantity) < 1) {
-            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }
     }
 
@@ -64,7 +65,7 @@ public class OrderUtil {
         try {
             Integer.parseInt(quantity);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }
     }
 

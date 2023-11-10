@@ -1,5 +1,7 @@
 package christmas.global;
 
+import static christmas.global.ErrorMessage.MENU_NAME_ERROR;
+
 import christmas.domain.menus.Appetizer;
 import christmas.domain.menus.Dessert;
 import christmas.domain.menus.Drink;
@@ -7,7 +9,6 @@ import christmas.domain.menus.MainMenu;
 import christmas.domain.menus.Menus;
 
 public class MenuUtil {
-    private static final String MENU_NAME_ERROR = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
     public static Menus convertToMenu(String menuName) {
         for (Dessert dessert : Dessert.values()) {
@@ -33,6 +34,6 @@ public class MenuUtil {
                 return drink;
             }
         }
-        throw new IllegalArgumentException(MENU_NAME_ERROR);
+        throw new IllegalArgumentException(MENU_NAME_ERROR.getMessage());
     }
 }

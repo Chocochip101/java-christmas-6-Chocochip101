@@ -21,7 +21,15 @@ public class OrderUtil {
             String[] oneOrder = getOneOrder(order);
             orderResult.put(getMenu(oneOrder), getQuantity(oneOrder));
         }
+
+        checkMenuDuplication(orderResult, orders);
         return new Order(orderResult);
+    }
+
+    private static void checkMenuDuplication(Map<Menus, Integer> orderResult, String[] orders) {
+        if (orders.length != orderResult.size()) {
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+        }
     }
 
     private static String[] getOneOrder(String order) {

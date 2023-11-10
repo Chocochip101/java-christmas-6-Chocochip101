@@ -37,7 +37,27 @@ public class OrderUtil {
     }
 
     private static int getQuantity(String[] parts) {
+        checkQuantity(parts[QUANTITY_PART].trim());
         return Integer.parseInt(parts[QUANTITY_PART].trim());
+    }
+
+    private static void checkQuantity(String quantityPart) {
+        checkInteger(quantityPart);
+        checkQuantityRange(quantityPart);
+    }
+
+    private static void checkQuantityRange(String quantity) {
+        if (Integer.parseInt(quantity) < 1) {
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+        }
+    }
+
+    private static void checkInteger(String quantity) {
+        try {
+            Integer.parseInt(quantity);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR);
+        }
     }
 
     private static Menus getMenu(String[] parts) {

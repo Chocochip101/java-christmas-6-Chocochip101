@@ -9,6 +9,7 @@ import christmas.ui.OutputView;
 
 public class EventPlanner {
     public void start() {
+        OutputView.printWelcomeCommand();
         Reservation reservation = new Reservation(getUserSchedule(), getUserOrder());
         OutputView.printEventPreview(reservation.getSchedule());
         OutputView.printOrderMenus(reservation.getOrder());

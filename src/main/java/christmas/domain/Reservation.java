@@ -1,9 +1,10 @@
 package christmas.domain;
 
+import static christmas.global.EventUtil.GIFT_MINIMUM_TOTAL_PRICE;
+
 import java.util.Objects;
 
 public class Reservation {
-    private static final int GIFT_MINIMUM_TOTAL_PRICE = 120_000;
     private final Schedule schedule;
     private final Order order;
 

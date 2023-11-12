@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.global.ErrorMessage.INVALID_ORDER_FORMAT_ERROR;
+import static christmas.global.EventUtil.MAX_ORDER_COUNT;
 
 import christmas.domain.menus.Drink;
 import christmas.domain.menus.Menus;
@@ -8,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Order {
-    private static final int MAX_ORDER_COUNT = 20;
+
     private final Map<Menus, Integer> orders;
 
     public Order(Map<Menus, Integer> input) {

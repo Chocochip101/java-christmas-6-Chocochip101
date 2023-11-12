@@ -19,6 +19,7 @@ public class EventPlanner {
 
         Benefit benefit = new Benefit(reservation);
         OutputView.printBenefit(benefit);
+        OutputView.printTotalBenefit(benefit.getTotalBenefit());
     }
 
     private Schedule getUserSchedule() {

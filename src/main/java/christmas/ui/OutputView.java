@@ -70,6 +70,7 @@ public class OutputView {
     public static void printBenefit(Benefit benefit) {
         System.out.println(BENEFIT_COMMAND);
         printDiscounts(benefit);
+        printNewLine();
     }
 
     private static void printDiscounts(Benefit benefit) {
@@ -82,6 +83,11 @@ public class OutputView {
 
     private static void printOneDiscount(Discount discount) {
         System.out.println(String.format(ONE_DISCOUNT_OUTPUT, discount.getDiscountName(), discount.getDiscount()));
+    }
+
+    public static void printTotalBenefit(int totalBenefit) {
+        System.out.println(TOTAL_BENEFIT_COMMAND);
+        System.out.println(String.format(TOTAL_BENEFIT_OUTPUT, totalBenefit));
     }
 
     private static void printNewLine() {

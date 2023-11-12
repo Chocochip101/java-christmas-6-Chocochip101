@@ -22,5 +22,9 @@ public class Benefit {
     public List<Discount> getDiscountInformation() {
         return discountInformation;
     }
+
+    public int getTotalBenefit() {
+        return discountInformation.stream().mapToInt(Discount::getDiscount).sum();
+    }
 }
 

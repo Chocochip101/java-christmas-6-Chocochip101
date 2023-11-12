@@ -3,6 +3,7 @@ package christmas.domain;
 import java.util.Objects;
 
 public class Reservation {
+    private static final int GIFT_MINIMUM_TOTAL_PRICE = 120_000;
     private final Schedule schedule;
     private final Order order;
 
@@ -23,6 +24,13 @@ public class Reservation {
         return order.getOrders().keySet().stream()
                 .mapToInt(menu -> menu.getPrice() * order.getOrders().get(menu))
                 .sum();
+    }
+
+    public boolean hasGiftMenu() {
+        if (getTotalWithoutDiscount() >= GIFT_MINIMUM_TOTAL_PRICE) {
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -2,6 +2,7 @@ package christmas.ui;
 
 import christmas.domain.Order;
 import christmas.domain.Schedule;
+import christmas.domain.menus.Gift;
 import christmas.domain.menus.Menus;
 import java.util.Map;
 
@@ -12,8 +13,10 @@ public class OutputView {
     private static final String EVENT_PREVIEW = "%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_OUTPUT_COMMAND = "<주문 메뉴>";
     private static final String TOTAL_PRICE_WITHOUT_DISCOUNT_COMMAND = "<할인 전 총주문 금액>";
+    private static final String GIFT_MENU_COMMAND = "<증정 메뉴>";
     private static final String TOTAL_PRICE_OUTPUT = "%,d원";
     private static final String ONE_ORDER_MENU_OUTPUT = "%s %d개";
+    private static final String NOTHING = "없음";
     private static final String ERROR_PREFIX = "[ERROR] ";
 
     public static void printExpectedVisitDate() {
@@ -41,7 +44,7 @@ public class OutputView {
     private static void printAllMenus(Order order) {
         Map<Menus, Integer> orders = order.getOrders();
         for (Menus menu : orders.keySet()) {
-            printOneMenu(menu, orders.get(menu));
+            printOneMenu(menu.getName(), orders.get(menu));
         }
         printNewLine();
     }
@@ -49,10 +52,20 @@ public class OutputView {
     public static void printTotalWithoutDiscount(int totalPrice) {
         System.out.println(TOTAL_PRICE_WITHOUT_DISCOUNT_COMMAND);
         System.out.println(String.format(TOTAL_PRICE_OUTPUT, totalPrice));
+        printNewLine();
     }
 
-    private static void printOneMenu(Menus menu, int menuCount) {
-        System.out.println(String.format(ONE_ORDER_MENU_OUTPUT, menu.getName(), menuCount));
+    public static void printGiftMenu(boolean hasGiftMenu) {
+        System.out.println(GIFT_MENU_COMMAND);
+        if (hasGiftMenu) {
+            printOneMenu(Gift.CHAMPAGNE.getName(), Gift.CHAMPAGNE.getCount());
+            return;
+        }
+        System.out.println(NOTHING);
+    }
+
+    private static void printOneMenu(String menuName, int menuCount) {
+        System.out.println(String.format(ONE_ORDER_MENU_OUTPUT, menuName, menuCount));
     }
 
     private static void printNewLine() {

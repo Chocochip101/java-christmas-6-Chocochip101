@@ -13,6 +13,7 @@ public class EventPlanner {
         OutputView.printEventPreview(reservation.getSchedule());
         OutputView.printOrderMenus(reservation.getOrder());
         OutputView.printTotalWithoutDiscount(reservation.getTotalWithoutDiscount());
+        OutputView.printGiftMenu(reservation.hasGiftMenu());
     }
 
     private Schedule getUserSchedule() {

@@ -196,4 +196,64 @@ class ReservationTest {
         //then
         assertEquals(reservation.getTotalWithoutDiscount(), expectedPrice);
     }
+
+    @Test
+    @DisplayName("증정 금액 이상일 경우, 증정품을 제공한다.")
+    public void testGiftMenu() {
+        //given
+        int count1 = 1;
+        int count2 = 3;
+        int count3 = 4;
+        Menus menu1 = Appetizer.CAESAR_SALAD;
+        Menus menu2 = Dessert.CHOCOLATE_CAKE;
+        Menus menu3 = MainMenu.T_BONE_STEAK;
+
+        int year = 2023;
+        int month = 12;
+        int day = 12;
+
+        //when
+        Map<Menus, Integer> orderResult = new HashMap<>();
+        orderResult.put(menu1, count1);
+        orderResult.put(menu2, count2);
+        orderResult.put(menu3, count3);
+
+        Order order = new Order(orderResult);
+        Schedule schedule = new Schedule(year, month, day);
+
+        Reservation reservation = new Reservation(schedule, order);
+
+        //then
+        assertTrue(reservation.hasGiftMenu());
+    }
+
+    @Test
+    @DisplayName("증정 금액 이하일 경우, 증정품을 제공하지 않는다.")
+    public void testNoGiftMenu() {
+        //given
+        int count1 = 1;
+        int count2 = 1;
+        int count3 = 1;
+        Menus menu1 = Appetizer.CAESAR_SALAD;
+        Menus menu2 = Dessert.CHOCOLATE_CAKE;
+        Menus menu3 = MainMenu.T_BONE_STEAK;
+
+        int year = 2023;
+        int month = 12;
+        int day = 12;
+
+        //when
+        Map<Menus, Integer> orderResult = new HashMap<>();
+        orderResult.put(menu1, count1);
+        orderResult.put(menu2, count2);
+        orderResult.put(menu3, count3);
+
+        Order order = new Order(orderResult);
+        Schedule schedule = new Schedule(year, month, day);
+
+        Reservation reservation = new Reservation(schedule, order);
+
+        //then
+        assertFalse(reservation.hasGiftMenu());
+    }
 }

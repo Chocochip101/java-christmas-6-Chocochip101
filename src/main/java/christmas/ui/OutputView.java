@@ -1,5 +1,6 @@
 package christmas.ui;
 
+import static christmas.global.EventUtil.NO_DISCOUNT;
 import static christmas.ui.InputCommand.*;
 import static christmas.ui.OutputCommand.*;
 
@@ -88,6 +89,17 @@ public class OutputView {
     public static void printTotalBenefit(int totalBenefit) {
         System.out.println(TOTAL_BENEFIT_COMMAND);
         System.out.println(String.format(TOTAL_BENEFIT_OUTPUT, totalBenefit));
+    }
+
+    public static void printNothingBenefit() {
+        System.out.println(BENEFIT_COMMAND);
+        System.out.println(NOTHING_OUTPUT);
+        printNewLine();
+    }
+
+    public static void printNothingTotalBenefit() {
+        System.out.println(TOTAL_BENEFIT_COMMAND);
+        System.out.println(String.format(TOTAL_PRICE_OUTPUT, NO_DISCOUNT));
     }
 
     private static void printNewLine() {

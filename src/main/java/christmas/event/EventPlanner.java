@@ -18,6 +18,15 @@ public class EventPlanner {
         OutputView.printGiftMenu(reservation.hasGiftMenu());
 
         Benefit benefit = new Benefit(reservation);
+        printBenefit(benefit);
+    }
+
+    private static void printBenefit(Benefit benefit) {
+        if (benefit.getTotalBenefit() == 0) {
+            OutputView.printNothingBenefit();
+            OutputView.printNothingTotalBenefit();
+            return;
+        }
         OutputView.printBenefit(benefit);
         OutputView.printTotalBenefit(benefit.getTotalBenefit());
     }

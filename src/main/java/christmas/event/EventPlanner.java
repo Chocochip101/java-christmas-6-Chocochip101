@@ -12,6 +12,7 @@ public class EventPlanner {
         Reservation reservation = new Reservation(getUserSchedule(), getUserOrder());
         OutputView.printEventPreview(reservation.getSchedule());
         OutputView.printOrderMenus(reservation.getOrder());
+        OutputView.printTotalWithoutDiscount(reservation.getTotalWithoutDiscount());
     }
 
     private Schedule getUserSchedule() {

@@ -19,6 +19,12 @@ public class Reservation {
         return schedule;
     }
 
+    public int getTotalWithoutDiscount() {
+        return order.getOrders().keySet().stream()
+                .mapToInt(menu -> menu.getPrice() * order.getOrders().get(menu))
+                .sum();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

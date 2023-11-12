@@ -164,4 +164,36 @@ class ReservationTest {
         //then
         assertNotEquals(reservation1.hashCode(), reservation2.hashCode());
     }
+
+    @Test
+    @DisplayName("할인 전 총 금액 반환에 성공한다.")
+    public void testTotalWithoutDiscount() {
+        //given
+        int count1 = 1;
+        int count2 = 3;
+        int count3 = 4;
+        Menus menu1 = Appetizer.CAESAR_SALAD;
+        Menus menu2 = Dessert.CHOCOLATE_CAKE;
+        Menus menu3 = MainMenu.T_BONE_STEAK;
+
+        int year = 2023;
+        int month = 12;
+        int day = 12;
+
+        int expectedPrice = menu1.getPrice() * count1 + menu2.getPrice() * count2 + menu3.getPrice() * count3;
+
+        //when
+        Map<Menus, Integer> orderResult = new HashMap<>();
+        orderResult.put(menu1, count1);
+        orderResult.put(menu2, count2);
+        orderResult.put(menu3, count3);
+
+        Order order = new Order(orderResult);
+        Schedule schedule = new Schedule(year, month, day);
+
+        Reservation reservation = new Reservation(schedule, order);
+
+        //then
+        assertEquals(reservation.getTotalWithoutDiscount(), expectedPrice);
+    }
 }

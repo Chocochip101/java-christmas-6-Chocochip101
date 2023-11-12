@@ -20,8 +20,8 @@ class DateUtilTest {
         assertEquals(DateUtil.convertInputToDate(userInput), expectedOutput);
     }
 
-    @DisplayName("날짜 범위 이외의 날짜 입력 시, 예외가 발생한다.")
-    @ValueSource(strings = {"999", "0", "-123", " a", "1 2"})
+    @DisplayName("숫자 이외의 날짜 입력 시, 예외가 발생한다.")
+    @ValueSource(strings = {" a", "1 2"})
     @ParameterizedTest
     public void testDateOutOfRange(String date) {
         //given&when&then

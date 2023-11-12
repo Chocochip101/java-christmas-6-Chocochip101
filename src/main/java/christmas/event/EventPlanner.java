@@ -1,13 +1,16 @@
 package christmas.event;
 
 import christmas.domain.Order;
+import christmas.domain.Schedule;
+import christmas.global.DateUtil;
 import christmas.ui.InputView;
 import christmas.ui.OutputView;
 
 public class EventPlanner {
     public void start() {
-        int userDate = getUserDate();
-        Order userOrder = getUserOrder();
+        Schedule schedule = new Schedule(DateUtil.YEAR, DateUtil.MONTH, getUserDate());
+        Order order = getUserOrder();
+        OutputView.printEventPreview(schedule);
     }
 
     private int getUserDate() {

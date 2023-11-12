@@ -11,6 +11,7 @@ public class EventPlanner {
     public void start() {
         Reservation reservation = new Reservation(getUserSchedule(), getUserOrder());
         OutputView.printEventPreview(reservation.getSchedule());
+        OutputView.printOrderMenus(reservation.getOrder());
     }
 
     private Schedule getUserSchedule() {

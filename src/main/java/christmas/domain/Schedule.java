@@ -8,6 +8,8 @@ import static christmas.global.DateUtil.MIN_MONTH;
 import static christmas.global.DateUtil.MIN_YEAR;
 import static christmas.global.ErrorMessage.INVALID_DATE_ERROR;
 
+import java.util.Objects;
+
 public class Schedule {
     private final int year;
     private final int month;
@@ -58,5 +60,22 @@ public class Schedule {
 
     public int getDay() {
         return day;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Schedule schedule = (Schedule) o;
+        return year == schedule.year && month == schedule.month && day == schedule.day;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, month, day);
     }
 }

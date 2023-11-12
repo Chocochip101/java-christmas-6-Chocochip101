@@ -5,6 +5,7 @@ import static christmas.global.ErrorMessage.INVALID_ORDER_FORMAT_ERROR;
 import christmas.domain.menus.Drink;
 import christmas.domain.menus.Menus;
 import java.util.Map;
+import java.util.Objects;
 
 public class Order {
     private static final int MAX_ORDER_COUNT = 20;
@@ -49,5 +50,22 @@ public class Order {
 
     public Map<Menus, Integer> getOrders() {
         return orders;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Order order = (Order) o;
+        return Objects.equals(orders, order.orders);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orders);
     }
 }

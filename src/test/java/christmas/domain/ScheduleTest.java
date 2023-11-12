@@ -3,7 +3,6 @@ package christmas.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
-import christmas.global.DateUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -66,5 +65,38 @@ class ScheduleTest {
         // when&then
         assertThatThrownBy(() -> new Schedule(year, month, day))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("같은 년,월,일로 구성될 때, 동등하다.")
+    public void testEquals() {
+        //given
+        int year = 2023;
+        int month = 12;
+        int day = 12;
+
+        //when
+        Schedule schedule1 = new Schedule(year, month, day);
+        Schedule schedule2 = new Schedule(year, month, day);
+
+        //then
+        assertTrue(schedule1.equals(schedule2));
+    }
+
+    @Test
+    @DisplayName("다른 년,월,일로 구성될 때, 동등하지 않다.")
+    public void testDifferentEquals() {
+        //given
+        int year = 2023;
+        int month = 12;
+        int day1 = 12;
+        int day2 = 13;
+
+        //when
+        Schedule schedule1 = new Schedule(year, month, day1);
+        Schedule schedule2 = new Schedule(year, month, day2);
+
+        //then
+        assertFalse(schedule1.equals(schedule2));
     }
 }

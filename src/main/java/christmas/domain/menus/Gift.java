@@ -1,20 +1,28 @@
 package christmas.domain.menus;
 
+import java.util.Arrays;
+
 public enum Gift {
-    CHAMPAGNE("샴페인", 1);
-    private final String name;
+    CHAMPAGNE(Drink.CHAMPAGNE, 1);
+    private final Menus gift;
     private final int count;
 
-    Gift(String name, int count) {
-        this.name = name;
+    Gift(Menus gift, int count) {
+        this.gift = gift;
         this.count = count;
     }
 
-    public String getName() {
-        return name;
+    public Menus getGift() {
+        return gift;
     }
 
     public int getCount() {
         return count;
+    }
+
+    public static int getTotalPriceOfGifts() {
+        return Arrays.stream(Gift.values())
+                .mapToInt(gift -> gift.getGift().getPrice() * gift.getCount())
+                .sum();
     }
 }

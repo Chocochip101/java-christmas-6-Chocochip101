@@ -3,8 +3,10 @@ package christmas.ui;
 import static christmas.ui.InputCommand.*;
 import static christmas.ui.OutputCommand.*;
 
+import christmas.domain.Benefit;
 import christmas.domain.Order;
 import christmas.domain.Schedule;
+import christmas.domain.discounts.Discount;
 import christmas.domain.menus.Gift;
 import christmas.domain.menus.Menus;
 import java.util.Map;
@@ -39,7 +41,7 @@ public class OutputView {
     private static void printAllMenus(Order order) {
         Map<Menus, Integer> orders = order.getOrders();
         for (Menus menu : orders.keySet()) {
-            printOneMenu(menu.getName(), orders.get(menu));
+            printOneMenu(menu, orders.get(menu));
         }
         printNewLine();
     }
@@ -53,14 +55,33 @@ public class OutputView {
     public static void printGiftMenu(boolean hasGiftMenu) {
         System.out.println(GIFT_MENU_COMMAND);
         if (hasGiftMenu) {
-            printOneMenu(Gift.CHAMPAGNE.getName(), Gift.CHAMPAGNE.getCount());
+            printOneMenu(Gift.CHAMPAGNE.getGift(), Gift.CHAMPAGNE.getCount());
+            printNewLine();
             return;
         }
         System.out.println(NOTHING_OUTPUT);
+        printNewLine();
     }
 
-    private static void printOneMenu(String menuName, int menuCount) {
-        System.out.println(String.format(ONE_ORDER_MENU_OUTPUT, menuName, menuCount));
+    private static void printOneMenu(Menus menus, int menuCount) {
+        System.out.println(String.format(ONE_ORDER_MENU_OUTPUT, menus.getName(), menuCount));
+    }
+
+    public static void printBenefit(Benefit benefit) {
+        System.out.println(BENEFIT_COMMAND);
+        printDiscounts(benefit);
+    }
+
+    private static void printDiscounts(Benefit benefit) {
+        for (Discount discount : benefit.getDiscountInformation()) {
+            if (discount.getDiscount() != 0) {
+                printOneDiscount(discount);
+            }
+        }
+    }
+
+    private static void printOneDiscount(Discount discount) {
+        System.out.println(String.format(ONE_DISCOUNT_OUTPUT, discount.getDiscountName(), discount.getDiscount()));
     }
 
     private static void printNewLine() {

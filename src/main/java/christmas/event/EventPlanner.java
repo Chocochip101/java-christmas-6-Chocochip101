@@ -1,5 +1,6 @@
 package christmas.event;
 
+import christmas.domain.Benefit;
 import christmas.domain.Order;
 import christmas.domain.Reservation;
 import christmas.domain.Schedule;
@@ -15,6 +16,9 @@ public class EventPlanner {
         OutputView.printOrderMenus(reservation.getOrder());
         OutputView.printTotalWithoutDiscount(reservation.getTotalWithoutDiscount());
         OutputView.printGiftMenu(reservation.hasGiftMenu());
+
+        Benefit benefit = new Benefit(reservation);
+        OutputView.printBenefit(benefit);
     }
 
     private Schedule getUserSchedule() {

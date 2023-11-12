@@ -8,6 +8,7 @@ import static christmas.global.DateUtil.MIN_MONTH;
 import static christmas.global.DateUtil.MIN_YEAR;
 import static christmas.global.ErrorMessage.INVALID_DATE_ERROR;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Schedule {

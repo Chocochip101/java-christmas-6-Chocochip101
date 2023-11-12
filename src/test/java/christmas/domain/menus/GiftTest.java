@@ -14,7 +14,7 @@ class GiftTest {
 
         //then
         assertAll(
-                () -> assertEquals(Gift.CHAMPAGNE.getName(), champagne)
+                () -> assertEquals(Gift.CHAMPAGNE.getGift().getName(), champagne)
         );
     }
 

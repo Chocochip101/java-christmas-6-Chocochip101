@@ -19,6 +19,7 @@ public class EventPlanner {
 
         Benefit benefit = new Benefit(reservation);
         printBenefit(benefit);
+        OutputView.printEstimatedPrice(reservation.getTotalWithoutDiscount(), benefit.getTotalDiscount());
     }
 
     private static void printBenefit(Benefit benefit) {

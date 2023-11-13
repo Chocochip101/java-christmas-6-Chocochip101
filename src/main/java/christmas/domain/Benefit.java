@@ -26,5 +26,12 @@ public class Benefit {
     public int getTotalBenefit() {
         return discountInformation.stream().mapToInt(Discount::getDiscount).sum();
     }
+
+    public int getTotalDiscount() {
+        return discountInformation.stream()
+                .limit(discountInformation.size() - 1)
+                .mapToInt(Discount::getDiscount)
+                .sum();
+    }
 }
 

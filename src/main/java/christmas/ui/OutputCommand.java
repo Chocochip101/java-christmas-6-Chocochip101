@@ -8,7 +8,8 @@ public class OutputCommand {
     static final String GIFT_MENU_COMMAND = "<증정 메뉴>";
     static final String BENEFIT_COMMAND = "<혜택 내역>";
     static final String TOTAL_BENEFIT_COMMAND = "<총혜택 금액>";
-    static final String TOTAL_PRICE_OUTPUT = "%,d원";
+    static final String ESTIMATED_PRICE_COMMAND = "<할인 후 예상 결제 금액>";
+    static final String PRICE_OUTPUT = "%,d원";
     static final String ONE_ORDER_MENU_OUTPUT = "%s %d개";
     static final String ONE_DISCOUNT_OUTPUT = "%s: -%,d원";
     static final String TOTAL_BENEFIT_OUTPUT = "-%,d원";

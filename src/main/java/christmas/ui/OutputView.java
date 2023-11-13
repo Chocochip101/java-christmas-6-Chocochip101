@@ -49,7 +49,7 @@ public class OutputView {
 
     public static void printTotalWithoutDiscount(int totalPrice) {
         System.out.println(TOTAL_PRICE_WITHOUT_DISCOUNT_COMMAND);
-        System.out.println(String.format(TOTAL_PRICE_OUTPUT, totalPrice));
+        System.out.println(String.format(PRICE_OUTPUT, totalPrice));
         printNewLine();
     }
 
@@ -89,6 +89,7 @@ public class OutputView {
     public static void printTotalBenefit(int totalBenefit) {
         System.out.println(TOTAL_BENEFIT_COMMAND);
         System.out.println(String.format(TOTAL_BENEFIT_OUTPUT, totalBenefit));
+        printNewLine();
     }
 
     public static void printNothingBenefit() {
@@ -99,7 +100,13 @@ public class OutputView {
 
     public static void printNothingTotalBenefit() {
         System.out.println(TOTAL_BENEFIT_COMMAND);
-        System.out.println(String.format(TOTAL_PRICE_OUTPUT, NO_DISCOUNT));
+        System.out.println(String.format(PRICE_OUTPUT, NO_DISCOUNT));
+        printNewLine();
+    }
+
+    public static void printEstimatedPrice(int totalPrice, int discountPrice) {
+        System.out.println(ESTIMATED_PRICE_COMMAND);
+        System.out.println(String.format(PRICE_OUTPUT, totalPrice - discountPrice));
     }
 
     private static void printNewLine() {

@@ -5,16 +5,18 @@ import static christmas.ui.InputCommand.*;
 import static christmas.ui.OutputCommand.*;
 
 import christmas.domain.Benefit;
+import christmas.domain.EventBadge;
 import christmas.domain.Order;
 import christmas.domain.Schedule;
 import christmas.domain.discounts.Discount;
 import christmas.domain.menus.Gift;
 import christmas.domain.menus.Menus;
+import christmas.global.DateUtil;
 import java.util.Map;
 
 public class OutputView {
     public static void printWelcomeCommand() {
-        System.out.println(WELCOME_COMMAND);
+        System.out.println(String.format(WELCOME_COMMAND, DateUtil.MONTH));
     }
 
     public static void printExpectedVisitDate() {
@@ -107,6 +109,12 @@ public class OutputView {
     public static void printEstimatedPrice(int totalPrice, int discountPrice) {
         System.out.println(ESTIMATED_PRICE_COMMAND);
         System.out.println(String.format(PRICE_OUTPUT, totalPrice - discountPrice));
+        printNewLine();
+    }
+
+    public static void printEventBadge(EventBadge eventBadge) {
+        System.out.println(String.format(EVENT_BADGE_COMMAND, DateUtil.MONTH));
+        System.out.println(eventBadge.getBadgeName());
     }
 
     private static void printNewLine() {

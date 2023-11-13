@@ -1,6 +1,7 @@
 package christmas.event;
 
 import christmas.domain.Benefit;
+import christmas.domain.EventBadge;
 import christmas.domain.Order;
 import christmas.domain.Reservation;
 import christmas.domain.Schedule;
@@ -20,6 +21,8 @@ public class EventPlanner {
         Benefit benefit = new Benefit(reservation);
         printBenefit(benefit);
         OutputView.printEstimatedPrice(reservation.getTotalWithoutDiscount(), benefit.getTotalDiscount());
+        EventBadge eventBadge = new EventBadge(benefit.getTotalBenefit());
+        OutputView.printEventBadge(eventBadge);
     }
 
     private static void printBenefit(Benefit benefit) {

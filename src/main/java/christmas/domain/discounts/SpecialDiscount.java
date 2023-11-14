@@ -17,13 +17,7 @@ public class SpecialDiscount implements Discount {
 
     @Override
     public int initializeDiscount(Reservation reservation) {
-        LocalDate currentDate = LocalDate.of(
-                reservation.getSchedule().getYear(),
-                reservation.getSchedule().getMonth(),
-                reservation.getSchedule().getDay()
-        );
-
-        if (STAR.isStarDate(currentDate)) {
+        if (STAR.isStarDate(reservation.getScheduleLocalDate())) {
             return STAR_DISCOUNT_AMOUNT;
         }
         return NO_DISCOUNT;

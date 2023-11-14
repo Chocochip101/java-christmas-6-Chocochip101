@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.global.EventUtil.GIFT_MINIMUM_TOTAL_PRICE;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Reservation {
@@ -32,6 +33,10 @@ public class Reservation {
             return true;
         }
         return false;
+    }
+
+    public LocalDate getScheduleLocalDate() {
+        return LocalDate.of(schedule.getYear(), schedule.getMonth(), schedule.getDay());
     }
 
     @Override

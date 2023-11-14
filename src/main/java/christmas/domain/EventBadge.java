@@ -1,12 +1,14 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public class EventBadge {
     private final Badge badge;
 
     enum Badge {
-        STAR(5_000, "별"),
-        TREE(10_000, "트리"),
         SANTA(20_000, "산타"),
+        TREE(10_000, "트리"),
+        STAR(5_000, "별"),
         NOTHING(0, "없음");
 
         private final int minimumPrice;
@@ -23,16 +25,10 @@ public class EventBadge {
     }
 
     private Badge initialize(int price) {
-        if (price >= Badge.SANTA.minimumPrice) {
-            return Badge.SANTA;
-        }
-        if (price >= Badge.TREE.minimumPrice) {
-            return Badge.TREE;
-        }
-        if (price >= Badge.STAR.minimumPrice) {
-            return Badge.STAR;
-        }
-        return Badge.NOTHING;
+        return Arrays.stream(Badge.values())
+                .filter(badge -> price >= badge.minimumPrice)
+                .findFirst()
+                .orElse(Badge.NOTHING);
     }
 
     public String getBadgeName() {

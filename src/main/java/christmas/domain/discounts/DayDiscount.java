@@ -6,12 +6,7 @@ import java.time.LocalDate;
 
 public class DayDiscount {
     public static Discount getDayDiscount(Reservation reservation) {
-        LocalDate currentDate = LocalDate.of(
-                reservation.getSchedule().getYear(),
-                reservation.getSchedule().getMonth(),
-                reservation.getSchedule().getDay()
-        );
-        DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+        DayOfWeek dayOfWeek = reservation.getScheduleLocalDate().getDayOfWeek();
         if (isWeekEnd(dayOfWeek)) {
             return new WeekEndDiscount(reservation);
         }

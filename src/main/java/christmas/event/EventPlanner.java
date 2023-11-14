@@ -13,16 +13,19 @@ public class EventPlanner {
     public void start() {
         OutputView.printWelcomeCommand();
         Reservation reservation = new Reservation(getUserSchedule(), getUserOrder());
-        OutputView.printEventPreview(reservation.getSchedule());
-        OutputView.printOrderMenus(reservation.getOrder());
-        OutputView.printTotalWithoutDiscount(reservation.getTotalWithoutDiscount());
-        OutputView.printGiftMenu(reservation.hasGiftMenu());
-
+        printReservationInformation(reservation);
         Benefit benefit = new Benefit(reservation);
         printBenefit(benefit);
         OutputView.printEstimatedPrice(reservation.getTotalWithoutDiscount(), benefit.getTotalDiscount());
         EventBadge eventBadge = new EventBadge(benefit.getTotalBenefit());
         OutputView.printEventBadge(eventBadge);
+    }
+
+    private static void printReservationInformation(Reservation reservation) {
+        OutputView.printEventPreview(reservation.getSchedule());
+        OutputView.printOrderMenus(reservation.getOrder());
+        OutputView.printTotalWithoutDiscount(reservation.getTotalWithoutDiscount());
+        OutputView.printGiftMenu(reservation.hasGiftMenu());
     }
 
     private static void printBenefit(Benefit benefit) {

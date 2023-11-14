@@ -106,6 +106,7 @@ class OrderTest {
         assertEquals(order1.hashCode(), order2.hashCode());
     }
 
+    // TODO 15줄?
     @Test
     @DisplayName("다른 객체의 해시코드는 다르다")
     public void testDifferentOrderHashCode() {

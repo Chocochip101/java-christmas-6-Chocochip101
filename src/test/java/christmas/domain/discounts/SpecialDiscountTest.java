@@ -20,11 +20,7 @@ class SpecialDiscountTest {
     @DisplayName("특별 이벤트 할인을 검증한다.")
     public void testSpecialDiscount() {
         //given
-        LocalDate currentDate = LocalDate.of(
-                reservation.getSchedule().getYear(),
-                reservation.getSchedule().getMonth(),
-                reservation.getSchedule().getDay()
-        );
+        LocalDate currentDate = reservation.getScheduleLocalDate();
 
         int expectedDiscount = 0;
         if (STAR.isStarDate(currentDate)) {

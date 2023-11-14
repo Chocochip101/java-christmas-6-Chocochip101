@@ -18,11 +18,7 @@ public class ChristmasDdayDiscount implements Discount {
 
     @Override
     public int initializeDiscount(Reservation reservation) {
-        LocalDate currentDate = LocalDate.of(
-                reservation.getSchedule().getYear(),
-                reservation.getSchedule().getMonth(),
-                reservation.getSchedule().getDay()
-        );
+        LocalDate currentDate = reservation.getScheduleLocalDate();
 
         LocalDate discountStartDate = LocalDate.of(DateUtil.YEAR, DateUtil.MONTH, DateUtil.MIN_DAY);
         LocalDate discountEndDate = LocalDate.of(DateUtil.YEAR, DateUtil.MONTH, DateUtil.CHRISTMAS_DAY);

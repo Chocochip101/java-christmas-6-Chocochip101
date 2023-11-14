@@ -23,10 +23,10 @@ public class Order {
     }
 
     private void validateMaxOrderCount(Map<Menus, Integer> input) {
-        int count = 0;
-        for (Menus key : input.keySet()) {
-            count += input.get(key);
-        }
+        int count = input.values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
         if (exceedMaxCount(count)) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
         }

@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.global.EventUtil.GIFT_MINIMUM_TOTAL_PRICE;
 
+import christmas.domain.menus.Menus;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -24,8 +25,12 @@ public class Reservation {
 
     public int getTotalWithoutDiscount() {
         return order.getOrders().keySet().stream()
-                .mapToInt(menu -> menu.getPrice() * order.getOrders().get(menu))
+                .mapToInt(this::calculateMenuPrice)
                 .sum();
+    }
+
+    private int calculateMenuPrice(Menus menu) {
+        return menu.getPrice() * order.getOrders().get(menu);
     }
 
     public boolean hasGiftMenu() {

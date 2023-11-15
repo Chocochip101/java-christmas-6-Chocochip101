@@ -12,4 +12,5 @@ public class EventUtil {
     public static final String SPECIAL_DISCOUNT_NAME = "특별 할인";
     public static final String WEEKDAY_DISCOUNT_NAME = "평일 할인";
     public static final String WEEKEND_DISCOUNT_NAME = "주말 할인";
+    public static final String NOTHING = "없음";
 }

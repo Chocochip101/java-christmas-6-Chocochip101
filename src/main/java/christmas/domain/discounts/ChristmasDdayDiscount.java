@@ -23,12 +23,17 @@ public class ChristmasDdayDiscount implements Discount {
         LocalDate discountStartDate = LocalDate.of(DateUtil.YEAR, DateUtil.MONTH, DateUtil.MIN_DAY);
         LocalDate discountEndDate = LocalDate.of(DateUtil.YEAR, DateUtil.MONTH, DateUtil.CHRISTMAS_DAY);
 
-        if (currentDate.isAfter(discountStartDate) && currentDate.isBefore(
-                discountEndDate.plusDays(DateUtil.DAY_EVENT_STEPS))) {
+        if (isInRangeDate(currentDate, discountStartDate, discountEndDate)) {
             int daysFromStart = (int) discountStartDate.until(currentDate, java.time.temporal.ChronoUnit.DAYS);
             return BASIC_DISCOUNT_AMOUNT + (daysFromStart * DAILY_INCREMENT_AMOUNT);
         }
         return NO_DISCOUNT;
+    }
+
+    private static boolean isInRangeDate(
+            LocalDate currentDate, LocalDate discountStartDate, LocalDate discountEndDate) {
+        return currentDate.isAfter(discountStartDate) &&
+                currentDate.isBefore(discountEndDate.plusDays(DateUtil.DAY_EVENT_STEPS));
     }
 
     @Override

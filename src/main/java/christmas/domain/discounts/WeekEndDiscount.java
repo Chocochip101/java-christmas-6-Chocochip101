@@ -22,12 +22,16 @@ class WeekEndDiscount implements Discount {
         Map<Menus, Integer> orders = reservation.getOrder().getOrders();
 
         for (Menus menu : orders.keySet()) {
-            if (menu instanceof MainMenu) {
+            if (isInstanceOfMenu(menu)) {
                 discountAmount += orders.get(menu) * DAY_DISCOUNT_AMOUNT;
             }
         }
 
         return discountAmount;
+    }
+
+    private static boolean isInstanceOfMenu(Menus menu) {
+        return menu instanceof MainMenu;
     }
 
     @Override

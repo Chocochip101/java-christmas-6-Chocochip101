@@ -38,14 +38,14 @@ public class Order {
 
     private void validateOnlyDrink(Map<Menus, Integer> input) {
         for (Menus key : input.keySet()) {
-            if (!isInstanceOf(key)) {
+            if (!isInstanceOfDrink(key)) {
                 return;
             }
         }
         throw new IllegalArgumentException(INVALID_ORDER_FORMAT_ERROR.getMessage());
     }
 
-    private static boolean isInstanceOf(Menus key) {
+    private static boolean isInstanceOfDrink(Menus key) {
         return key instanceof Drink;
     }
 

@@ -5,6 +5,7 @@ public class EventUtil {
     public static final int GIFT_MINIMUM_TOTAL_PRICE = 120_000;
     public static final int STAR_DISCOUNT_AMOUNT = 1_000;
     public static final int NO_DISCOUNT = 0;
+    public static final int EVENT_MINIMUM_PRICE = 10_000;
     public static final int DAY_DISCOUNT_AMOUNT = 2023;
     public static final String CHRISTMAS_DISCOUNT_NAME = "크리스마스 디데이 할인";
     public static final String GIFT_DISCOUNT_NAME = "증정 이벤트";
